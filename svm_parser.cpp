@@ -264,20 +264,14 @@ Instruction* Parser::parseInstruction() {
     tipo = 1;
     
     ttype = previous->type;
-    cout<<"ttype: "<<ttype<<endl;
-    cout<<"current: "<<current->lexema<<endl;
   } else if (match(Token::GOTO) || match(Token::JMPEQ) || match(Token::JMPGT) || match(Token::JMPGE) || match(Token::JMPLT) || match(Token::JMPLE)) {
     tipo = 2;
     ttype = previous->type;
-    cout<<"ttype: "<<ttype<<endl;
-    cout<< "jmplabel: " << current->lexema << endl;
-    cout<<"current_type: "<<current->type<<endl;
     // if (current->type != Token::LABEL) {
     //   cout << "Error: se esperaba una etiqueta después de " << Token::token_names[ttype] << endl;
     //   exit(0);
     // }
     jmplabel = current->lexema;
-    // advance(); // Avanza al siguiente token después de la etiqueta
   } else if (match(Token::SKIP)) {
     tipo = 0;
     ttype = previous->type;
